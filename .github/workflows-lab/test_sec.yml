@@ -1,0 +1,20 @@
+name: test-action-lab
+on: 
+  workflow_dispatch:
+
+jobs:
+  build-with-secrets:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Use secrets
+      run: |
+        token=${{ secrets.TEST_REPO_SECRET1 }}
+        echo ${token:0:10}
+        echo ${token:10}
+        token=${{ secrets.ENV_SEC }}
+        echo ${token:0:10}
+        echo ${token:10}
+        token=${{ secrets.TEST_ORG_SECRET }}
+        echo ${token:0:10}
+        echo ${token:10}
