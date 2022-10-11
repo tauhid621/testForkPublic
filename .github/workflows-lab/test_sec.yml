@@ -25,5 +25,5 @@ jobs:
         echo ${token}
         # token=${{ vars.ENV_VAR }}
         # echo ${token}
-        token=${{ varz.TEST_ORG_VAR }}
+        token=${{ vars.TEST_ORG_VAR }}
         echo ${token}
