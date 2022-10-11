@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-with-secrets:
+  display-secrets-and-variables:
     runs-on: ubuntu-latest
     environment: dev
     steps:
