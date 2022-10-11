@@ -18,3 +18,12 @@ jobs:
         token=${{ secrets.TEST_ORG_SECRET }}
         echo ${token:0:10}
         echo ${token:10}
+        
+    - name: Use variables
+      run: |
+        token=${{ vars.TEST_REPO_VAR }}
+        echo ${token}
+        # token=${{ vars.ENV_VAR }}
+        # echo ${token}
+        token=${{ varz.TEST_ORG_VAR }}
+        echo ${token}
