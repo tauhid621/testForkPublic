@@ -27,4 +27,4 @@ jobs:
         
   display-with-reusable:
     name: Display reusable
-    uses: VarzTestOrg/reusable/.github/workflows/reusable.yml@main
+    uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
