@@ -29,4 +29,4 @@ jobs:
         echo ${token}
         NEW_VAR_FROM_PROD
         token=${{ vars.NEW_VAR_FROM_PROD }}
-        echo "$token"
+        echo "variable : $token"
