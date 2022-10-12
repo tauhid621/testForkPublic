@@ -27,5 +27,4 @@ jobs:
         # echo ${token}
         token=${{ vars.TEST_ORG_VAR }}
         echo ${token}
-        NEW_VAR_FROM_PROD
         echo "variable : ${{ vars.NEW_VAR_FROM_PROD }}"
