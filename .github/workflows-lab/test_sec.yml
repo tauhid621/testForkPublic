@@ -7,24 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-    - name: Use secrets
-      run: |
-        token=${{ secrets.TEST_REPO_SECRET1 }}
-        echo ${token:0:10}
-        echo ${token:10}
-        token=${{ secrets.ENV_SEC }}
-        echo ${token:0:10}
-        echo ${token:10}
-        token=${{ secrets.TEST_ORG_SECRET }}
-        echo ${token:0:10}
-        echo ${token:10}
+#     - name: Use secrets
+#       run: |
+#         token=${{ secrets.TEST_REPO_SECRET1 }}
+#         echo ${token:0:10}
+#         echo ${token:10}
+#         token=${{ secrets.ENV_SEC }}
+#         echo ${token:0:10}
+#         echo ${token:10}
+#         token=${{ secrets.TEST_ORG_SECRET }}
+#         echo ${token:0:10}
+#         echo ${token:10}
         
     - name: Use variables
       run: |
-        token=${{ vars.TEST_REPO_VAR }}
-        echo ${token}
-        # token=${{ vars.ENV_VAR }}
-        # echo ${token}
-        token=${{ vars.TEST_ORG_VAR }}
-        echo ${token}
-        echo "variable : ${{ vars.NEW_VAR_FROM_PROD }}"
+        echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
+        echo "org variable : ${{ vars.TEST_ORG_VAR }}"
+        echo "overriden variable : ${{ vars.OVERRIDE_VAR }}"
