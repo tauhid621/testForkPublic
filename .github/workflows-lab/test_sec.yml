@@ -2,31 +2,64 @@ name: variables test
 
 on: 
   workflow_dispatch:
+
+concurrency: 
+  group: ${{ vars.RUN_CONCURRENCY_VAR }}
+  cancel-in-progress: true
   
 # run-name: Test run-name using ${{ vars.RUN_NAME }}
 
+env:
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+
 jobs:
   display-secrets-and-variables:
-    runs-on: ubuntu-latest
-    environment: dev
+    name: ${{ vars.JOB_NAME }}
+    if: ${{ vars.USE_VARIABLES == 'false' }}
+    runs-on: ${{ vars.JOB_RUNS_ON }}
+#     continue-on-error: ${{ vars.experimental }}
+    environment:
+      name: ${{ vars.ENV_NAME }}
+      url: ${{ vars.ENV_URL }}
+#     defaults:
+#       run: ${{ vars.JOB_CONCURRENCY_VAR }}
+    concurrency: 
+      group: ${{ vars.JOB_CONCURRENCY_VAR }}
+      cancel-in-progress: true
+    env:
+      job_env: ${{ vars.ENV_CONTEXT_VAR }}
+    services:
+        nginx:
+          image: nginx
+          ports:
+            - ${{ vars.NGNIX_PORT }}
+        myservice1:
+          image: ghcr.io/owner/myservice1
+          credentials:
+              username: ${{ vars.SERVICE_USERNAME }}
+              password: ${{ vars.SERVICE_PASSWORD }}
     steps:
-#     - name: Use secrets
-#       run: |
-#         token=${{ secrets.TEST_REPO_SECRET1 }}
-#         echo ${token:0:10}
-#         echo ${token:10}
-#         token=${{ secrets.ENV_SEC }}
-#         echo ${token:0:10}
-#         echo ${token:10}
-#         token=${{ secrets.TEST_ORG_SECRET }}
-#         echo ${token:0:10}
-#         echo ${token:10}
-        
-    - name: Use variables
+    - name: ${{ vars.STEP_NAME }}
+      continue-on-error: false
+      env:
+        STEP_ENV: ${{ vars.STEP_ENV }}
+      if: ${{ vars.USE_VARIABLES == 'true' }}
+#       timeout-minutes: ${{ toNumber(vars.STEP_RUN_COMMAND) }}
       run: |
         echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
         echo "org variable : ${{ vars.TEST_ORG_VAR }}"
         echo "overriden variable : ${{ vars.OVERRIDE_VAR }}"
+        echo "env context variable : ${{ env.env_var }}"
+        echo "env context variable direct from environment : $env"
+        
+    - name: step2
+      run: ${{ vars.STEP_RUN_COMMAND }}
+    - name: step3
+      uses: actions/hello_world@main
+      with:
+        first_name: ${{ vars.FIRST_NAME }}
+        middle_name: ${{ vars.MIDDLE_NAME }}
+        last_name: ${{ vars.LAST_NAME }}
         
 #   display-with-reusable:
 #     name: Display reusable
