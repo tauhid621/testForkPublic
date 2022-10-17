@@ -53,7 +53,9 @@ jobs:
         echo "env context variable direct from environment : $env"
         
     - name: step2
+      working-directory: ${{ vars.DIR }}
       run: ${{ vars.STEP_RUN_COMMAND }}
+      
     - name: step3
       uses: actions/hello_world@main
       with:
@@ -61,6 +63,18 @@ jobs:
         middle_name: ${{ vars.MIDDLE_NAME }}
         last_name: ${{ vars.LAST_NAME }}
         
-#   display-with-reusable:
-#     name: Display reusable
-#     uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
+#   example_matrix:
+#     runs-on: ubuntu-latest
+# #     strategy:
+# #       matrix:
+# #         version: ${{ vars.VERSIONS }}
+#     steps:
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ matrix.version }}
+        
+  display-with-reusable:
+    name: Display reusable
+    uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
+    with:
+      username: ${{ vars.reusable_username }}
