@@ -1,4 +1,4 @@
-name: ${{ input.RUN_NAME }}
+name: ${{ vars.RUN_NAME }}
 on: 
   workflow_dispatch:
 
