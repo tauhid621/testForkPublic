@@ -1,7 +1,7 @@
 name: variables test
 on: 
   workflow_dispatch:
-run-name: Test run-name
+run-name: Test run-name using ${{ vars.RUN_NAME }}
 jobs:
   display-secrets-and-variables:
     runs-on: ubuntu-latest
