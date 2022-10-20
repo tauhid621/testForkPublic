@@ -5,7 +5,7 @@ on:
 
 jobs:
     display-with-reusable:
-    name: Display reusable
-    uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
-    with:
-      username: ${{ vars.reusable_username }}
+      name: Display reusable
+      uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
+      with:
+        username: ${{ vars.reusable_username }}
