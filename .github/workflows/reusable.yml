@@ -1,0 +1,21 @@
+name: reusable
+on: 
+  workflow_call:
+    inputs:
+      username:
+        required: false
+        type: string
+        default: 'dev'
+
+jobs:
+  reusable-job:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Use variables
+      run: |
+        echo "env var : ${{ vars.TEST_ENV_VAR }}
+        echo "input var : ${{ inputs.username }}
+        echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
+        echo "org variable : ${{ vars.TEST_ORG_VAR }}"
+        echo "overriden variable : ${{ vars.OVERRIDE_VAR }}"
