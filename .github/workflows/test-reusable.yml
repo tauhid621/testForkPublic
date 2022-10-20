@@ -1,0 +1,11 @@
+name: variables reusable test
+
+on: 
+  workflow_dispatch:
+
+jobs:
+    display-with-reusable:
+    name: Display reusable
+    uses: VarzTestOrg/test/.github/workflows-lab/reusable.yml@main
+    with:
+      username: ${{ vars.reusable_username }}
