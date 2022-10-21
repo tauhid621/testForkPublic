@@ -56,12 +56,12 @@ jobs:
       working-directory: ${{ vars.DIR }}
       run: ${{ vars.STEP_RUN_COMMAND }}
       
-    - name: step3
-      uses: actions/hello_world@main
-      with:
-        first_name: ${{ vars.FIRST_NAME }}
-        middle_name: ${{ vars.MIDDLE_NAME }}
-        last_name: ${{ vars.LAST_NAME }}
+#     - name: step3
+#       uses: actions/hello_world@main
+#       with:
+#         first_name: ${{ vars.FIRST_NAME }}
+#         middle_name: ${{ vars.MIDDLE_NAME }}
+#         last_name: ${{ vars.LAST_NAME }}
         
 #   example_matrix:
 #     runs-on: ubuntu-latest
