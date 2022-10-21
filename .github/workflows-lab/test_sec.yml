@@ -28,6 +28,9 @@ jobs:
       cancel-in-progress: true
     env:
       job_env: ${{ vars.ENV_CONTEXT_VAR }}
+    container:
+      env:
+        job_container_env: ${{ vars.ENV_CONTEXT_VAR }}
     services:
         nginx:
           image: nginx
