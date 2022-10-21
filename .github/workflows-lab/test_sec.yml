@@ -29,8 +29,14 @@ jobs:
     env:
       job_env: ${{ vars.ENV_CONTEXT_VAR }}
     container:
+      image: node:14.16
       env:
-        job_container_env: ${{ vars.ENV_CONTEXT_VAR }}
+        NODE_ENV: ${{ vars.ENV_CONTEXT_VAR }}
+      ports:
+        - 80
+      volumes:
+        - my_docker_volume:/volume_mount
+      options: --cpus 1
     services:
         nginx:
           image: nginx
