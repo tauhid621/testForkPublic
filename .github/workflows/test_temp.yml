@@ -1,0 +1,21 @@
+name: "Trigger Integration tests"
+on:
+  workflow_dispatch:
+      
+jobs: 
+  trigger-integration-tests:
+    name: Trigger Integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+            path: IntegrationTests
+
+      - name: Always pass
+        run: exit 0
+     - name: Always fail
+        run: exit 1
+     - name: Always skip
+       if: false
+       run : echo "Hello"
