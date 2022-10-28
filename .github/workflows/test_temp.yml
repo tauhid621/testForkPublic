@@ -14,8 +14,8 @@ jobs:
 
       - name: Always pass
         run: exit 0
-     - name: Always fail
+      - name: Always fail
         run: exit 1
-     - name: Always skip
-       if: false
-       run : echo "Hello"
+      - name: Always skip
+        if: false
+        run : echo "Hello"
