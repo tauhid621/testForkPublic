@@ -19,3 +19,6 @@ jobs:
       - name: Always skip
         if: false
         run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
