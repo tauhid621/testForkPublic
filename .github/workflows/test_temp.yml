@@ -14,6 +14,12 @@ jobs:
 
       - name: Always pass
         run: exit 0
+      - name: Always skip
+        if: false
+        run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
       - name: Always fail
         run: exit 1
       - name: Always skip
@@ -22,3 +28,4 @@ jobs:
       - name: Always run after skip
         if: true
         run : echo "Hello"
+
