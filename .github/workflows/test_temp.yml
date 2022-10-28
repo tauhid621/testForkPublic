@@ -2,9 +2,9 @@ name: "Trigger Integration tests"
 on:
   workflow_dispatch:
       
-jobs: 
-  trigger-integration-tests:
-    name: Trigger Integration tests
+jobs:
+  trigger-integration-tests0:
+    name: Trigger Integration tests0
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -21,7 +21,60 @@ jobs:
         if: true
         run : echo "Hello"
       - name: Always fail
-        continue-on-error: true
+         continue-on-error: true
+        run: exit 1
+      - name: Always skip
+        if: false
+        run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
+  trigger-integration-tests2:
+    name: Trigger Integration tests2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+            path: IntegrationTests
+
+      - name: Always pass
+        run: exit 0
+      - name: Always skip
+        if: false
+        run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
+      - name: Always fail
+#         continue-on-error: true
+        run: exit 1
+      - name: Always skip
+        if: false
+        run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
+  trigger-integration-tests3:
+    if: false
+    name: Trigger Integration tests3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+            path: IntegrationTests
+
+      - name: Always pass
+        run: exit 0
+      - name: Always skip
+        if: false
+        run : echo "Hello"
+      - name: Always run after skip
+        if: true
+        run : echo "Hello"
+      - name: Always fail
+#         continue-on-error: true
         run: exit 1
       - name: Always skip
         if: false
