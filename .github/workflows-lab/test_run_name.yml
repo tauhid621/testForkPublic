@@ -13,4 +13,5 @@ jobs:
       run: |
         echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
         echo "org variable : ${{ vars.TEST_ORG_VAR }}"
+        echo "org variable : ${{ vars.LARGE_ENV_VAR_NAME }}"
         echo "overriden variable : ${{ vars.LARGE_OVERRIDE_VAR }}"
