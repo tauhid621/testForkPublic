@@ -37,16 +37,16 @@ jobs:
       volumes:
         - my_docker_volume:/volume_mount
       options: --cpus 1
-    services:
-        nginx:
-          image: nginx
-          ports:
-            - ${{ vars.NGNIX_PORT }}
-        myservice1:
-          image: ghcr.io/owner/myservice1
-          credentials:
-              username: ${{ vars.SERVICE_USERNAME }}
-              password: ${{ vars.SERVICE_PASSWORD }}
+#    services:
+#        nginx:
+#          image: nginx
+#          ports:
+#            - ${{ vars.NGNIX_PORT }}
+#        myservice1:
+#          image: ghcr.io/owner/myservice1
+#          credentials:
+#              username: ${{ vars.SERVICE_USERNAME }}
+#              password: ${{ vars.SERVICE_PASSWORD }}
     steps:
     - name: ${{ vars.STEP_NAME }}
       continue-on-error: false
