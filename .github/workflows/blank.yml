@@ -31,3 +31,4 @@ jobs:
           echo "The GitHub Action Variable will be unmasked:  "
           echo ${{ vars.FIRST_ENV_VAR }}
           echo ${{ vars.SEC_ENV_VAR }}
+          echo ${{ format('{0}_A', github.event.inputs.env) }}
