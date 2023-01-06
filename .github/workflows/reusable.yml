@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Use variables
       run: |
-        echo "env var : ${{ vars.TEST_ENV_VAR }}
+        echo "env var : ${{ vars[format('{0}_A', vars.foo)] }}
         echo "input var : ${{ inputs.username }}
         echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
         echo "org variable : ${{ vars.TEST_ORG_VAR }}"
