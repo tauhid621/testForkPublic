@@ -1,0 +1,17 @@
+name: test-secret-vars-fork
+on: 
+  workflow_dispatch:
+  pull_request:
+jobs:
+  build-with-secrets:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Use secrets
+      run: |
+        token=${{ secrets.TEST_SECRET }}
+        echo ${token:1}
+        token1=${{ secrets.ENV_SEC }}
+        echo ${token1:1}
+        echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
+        echo "repo variable : ${{ vars.ENV_VAR }}"
