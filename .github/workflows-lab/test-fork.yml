@@ -11,6 +11,8 @@ jobs:
       run: |
         token=${{ secrets.TEST_SECRET }}
         echo ${token:1}
+        token=${{ secrets.TEST_REPO_SECRET }}
+        echo ${token:1}
         token1=${{ secrets.ENV_SEC }}
         echo ${token1:1}
         echo "repo variable : ${{ vars.TEST_REPO_VAR }}"
